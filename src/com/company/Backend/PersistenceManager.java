@@ -5,7 +5,6 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -168,4 +167,45 @@ public class PersistenceManager {
         }
         return redoMove;
     }
+    public boolean hasUnfinishedGame(){
+        return Files.exists(Paths.get(GameConstants.CURRENT_GAME_FILE));
+    }
+    public boolean hasGamesForAllLevels(){
+        return  countGamesInDir(GameConstants.EASY_DIR) > 0 &&
+                countGamesInDir(GameConstants.MEDIUM_DIR) > 0 &&
+                countGamesInDir(GameConstants.HARD_DIR) > 0;
+    }
+    private int countGamesInDir(String dirPath){
+        Path path = Paths.get(dirPath);
+        if(!Files.exists(path)) return 0;
+
+        try(DirectoryStream<Path> stream = Files.newDirectoryStream(path, "*.sdk")){
+            int count = 0;
+            for(Path entry : stream)
+                count++;
+            return count;
+        }catch (IOException e){
+            return 0;
+        }
+    }
+    private String getDirectoryForLevel(GameConstants.Difficulty level){
+        switch (level){
+            case EASY : return GameConstants.EASY_DIR;
+            case MEDIUM: return GameConstants.MEDIUM_DIR;
+            case HARD: return GameConstants.HARD_DIR;
+            default: return GameConstants.EASY_DIR;
+        }
+    }
+    public int getUndoCount(){
+        return undoStack.size();
+    }
+    public int getRedoCount(){
+        return redoStack.size();
+    }
+    public void clearStack(){
+        undoStack.clear();
+        redoStack.clear();
+        logFileLoaded = false;
+    }
+
 }

@@ -12,4 +12,7 @@ public class GameConstants {
     public enum Difficulty{
         EASY, MEDIUM, HARD
     }
+    public enum GameState{
+        VALID, INVALID, INCOMPLETE
+    }
 }

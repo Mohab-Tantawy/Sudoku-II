@@ -175,7 +175,7 @@ public class PersistenceManager {
                 countGamesInDir(GameConstants.MEDIUM_DIR) > 0 &&
                 countGamesInDir(GameConstants.HARD_DIR) > 0;
     }
-    private int countGamesInDir(String dirPath){
+    public int countGamesInDir(String dirPath){
         Path path = Paths.get(dirPath);
         if(!Files.exists(path)) return 0;
 

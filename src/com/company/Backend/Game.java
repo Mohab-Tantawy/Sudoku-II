@@ -29,6 +29,7 @@ public class Game {
     public void setGameId(String gameId) {this.gameId = gameId;}
     public boolean isComplete() {return isComplete;}
     public void setComplete(boolean complete) {isComplete = complete;}
+
     // Converts Grid to STRING format
     public String serialize(){
         StringBuilder sb = new StringBuilder();
@@ -47,5 +48,26 @@ public class Game {
             grid[row][col] = Character.getNumericValue(data.charAt(i));
         }
         return new Game(grid, difficulty);
+    }
+    public int getEmptyCellCount(){
+        int count = 0;
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(grid[i][j] == 0) count++;
+            }
+        }
+        return count;
+    }
+    public boolean isCellEmpty(int x, int y){
+        return grid[x][y] == 0;
+    }
+    public void setCell(int x, int y, int value){
+        if(x >= 0 && x < 9 && y >= 0 && y < 9 && value >= 0 && value <=9)
+            grid[x][y] = value;
+    }
+    public int getCell(int x, int y){
+        if(x >= 0 && x < 9 && y >= 0 && y < 9)
+            return grid[x][y];
+        return -1;
     }
 }

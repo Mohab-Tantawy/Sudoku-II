@@ -1,19 +1,21 @@
 package com.company.Backend;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Stack;
 
 public class PersistenceManager {
     private Stack<Move> undoStack = new Stack<>();
+    private Stack<Move> redoStack = new Stack<>();
     private boolean logFileLoaded = false;
+
     public void initializeFolders() throws IOException{
         String[] dirs = {
                 GameConstants.SAVE_DIR,
@@ -47,6 +49,32 @@ public class PersistenceManager {
         }
 
     }
+    private void loadLogIntoStack() throws IOException{
+        Path logPath = Paths.get(GameConstants.LOG_FILE);
+        if(!Files.exists(logPath) || Files.size(logPath) == 0){
+            undoStack.clear();
+            return;
+        }
+        undoStack.clear();
+        List<String> lines = Files.readAllLines(logPath);
+        for(String line : lines){
+            undoStack.push(Move.deserialize(line));
+        }
+        logFileLoaded = true;
+    }
+    private void rewriteLogFileFromStack() throws IOException{
+        Path logPath = Paths.get(GameConstants.LOG_FILE);
+        if(undoStack.isEmpty()){
+            Files.deleteIfExists(logPath);
+            return;
+        }
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(logPath)))){
+            List<Move> movesInOrder = new ArrayList<>(undoStack);
+            for(Move move : movesInOrder){
+                writer.write((move.serialize()));
+            }
+        }
+    }
     public void saveGame(GameConstants.Difficulty level, Game game) throws IOException{
         String dir = getDirectoryForLevel(level);
         String filename = dir + "/" + game.getGameId() + ".sdk";
@@ -57,5 +85,87 @@ public class PersistenceManager {
             writer.write(level.toString());
         }
     }
+    public Game loadRandomGame(GameConstants.Difficulty level) throws IOException{
+        String dir = getDirectoryForLevel(level);
+        Path dirPath = Paths.get(dir);
+        if(!Files.exists(dirPath)) return null;
 
+        List<Path> files = new ArrayList<>();
+        try(DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath,"*.sdk")){
+            for(Path entry : stream){
+                files.add(entry);
+            }
+        }
+        if(files.isEmpty()) return null;
+
+        Random rand = new Random();
+        Path selectedFiles = files.get(rand.nextInt(files.size()));
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(selectedFiles.toFile()))){
+            String gridData = reader.readLine();
+            String levelStr = reader.readLine();
+            return Game.deserialize(gridData, GameConstants.Difficulty.valueOf(levelStr));
+        }
+    }
+    public void deleteGame(GameConstants.Difficulty level, String gameId) throws IOException{
+        String filename = getDirectoryForLevel(level) + "/" + gameId + ".sdk";
+        Files.deleteIfExists(Paths.get(filename));
+    }
+    public void saveCurrentGame(Game game) throws IOException{
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(GameConstants.CURRENT_GAME_FILE))){
+            writer.write(game.serialize());
+            writer.newLine();
+            writer.write((game.getDifficulty().toString()));
+        }
+        if(!Files.exists(Paths.get(GameConstants.LOG_FILE)))
+            Files.createFile(Paths.get(GameConstants.LOG_FILE));
+        if(!logFileLoaded)
+            loadLogIntoStack();
+    }
+    public Game loadCurrentGame() throws IOException{
+        if(!Files.exists(Paths.get(GameConstants.CURRENT_GAME_FILE)))
+            return null;
+        Game game;
+        try(BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(new FileReader(GameConstants.CURRENT_GAME_FILE))))){
+            String gridData = reader.readLine();
+            String levelStr = reader.readLine();
+            game = Game.deserialize(gridData, GameConstants.Difficulty.valueOf(levelStr));
+        }
+        if(!logFileLoaded) loadLogIntoStack();
+        return game;
+    }
+    public void deleteCurrentGame() throws IOException{
+        undoStack.clear();
+        logFileLoaded = false;
+        Files.deleteIfExists(Paths.get(GameConstants.CURRENT_GAME_FILE));
+        Files.deleteIfExists(Paths.get(GameConstants.LOG_FILE));
+    }
+    public void logMove(int x, int y, int newValue, int oldValue) throws IOException{
+        Move move = new Move(x, y, newValue, oldValue);
+        undoStack.push(move);
+        redoStack.clear();
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(GameConstants.LOG_FILE, true))){
+            writer.write(move.serialize());
+            writer.newLine();
+        }
+    }
+    public Move undoLastMove() throws IOException{
+        if(undoStack.isEmpty()) return null;
+        Move lastMove = undoStack.pop();
+        rewriteLogFileFromStack();
+        return lastMove;
+    }
+    public Move redoLastMove() throws IOException{
+        if(redoStack.isEmpty())
+            return null;
+        Move redoMove = redoStack.pop();
+        undoStack.push(redoMove);
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(GameConstants.LOG_FILE, true))){
+            writer.write((redoMove.serialize()));
+            writer.newLine();
+        }
+        return redoMove;
+    }
 }

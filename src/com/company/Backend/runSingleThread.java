@@ -1,6 +1,6 @@
 package com.company.Backend;
 
-import com.company.Check;
+import com.company.Backend.Check;
 import com.company.SudokuValidator;
 
 public class runSingleThread implements SudokuValidator {

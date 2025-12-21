@@ -25,6 +25,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
      */
 
     public String sourceFile;
+    private PersistenceManager pm;
 
     public String getSourceFile() {
         return sourceFile;
@@ -32,8 +33,8 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     public DiffChooserGUI() {
         initComponents();
-        PersistenceManager manager=new PersistenceManager();
-
+        PersistenceManager PM=new PersistenceManager();
+        pm=PM;
         setLocationRelativeTo(null);
     }
 
@@ -131,6 +132,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
             String filePath= chooser.getSelectedFile().getAbsolutePath();
             sourceFile=filePath;
             JOptionPane.showMessageDialog(null, filePath);
+
         }
     }
 

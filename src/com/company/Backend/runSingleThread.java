@@ -1,6 +1,5 @@
 package com.company.Backend;
 
-import com.company.Backend.Check;
 import com.company.SudokuValidator;
 
 public class runSingleThread implements SudokuValidator {
@@ -11,7 +10,7 @@ public class runSingleThread implements SudokuValidator {
     private final int TOTAL_CHECKS = 9 ;
 
     @Override
-    public void validate(int[][] grid){
+    public boolean validate(int[][] grid){
         System.out.println("\n Mode 1: SINGLE THREADED VALIDATION");
         System.out.println("=".repeat(50));
 
@@ -62,9 +61,9 @@ public class runSingleThread implements SudokuValidator {
 
         }
         System.out.println("-".repeat(50));
-        displayFinalResults();
+        return displayFinalResults();
     }
-    private void displayFinalResults(){
+    private boolean displayFinalResults(){
        /* System.out.println("\n" + "=".repeat(50));
         System.out.println("FINAL VALIDATION RESULTS:");
         System.out.println("=".repeat(50));
@@ -73,9 +72,11 @@ public class runSingleThread implements SudokuValidator {
         System.out.println("Valid Boxes: " + validBoxes + "/" + TOTAL_CHECKS);*/
         if(validRows == TOTAL_CHECKS && validColumns == TOTAL_CHECKS && validBoxes == TOTAL_CHECKS){
             System.out.println("\n🎉 SUCCESS: Valid Sudoku Solution!");
+            return true;
         }else{
             System.out.println("\n❌ FAILED: Invalid Sudoku Solution!");
+            return false;
         }
-        System.out.println("=".repeat(50));
+       // System.out.println("=".repeat(50));
     }
 }

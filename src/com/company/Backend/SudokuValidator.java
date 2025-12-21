@@ -1,5 +1,5 @@
 package com.company;
 
 public interface SudokuValidator {
-    void validate(int[][] grid);
+    boolean validate(int[][] grid);
 }

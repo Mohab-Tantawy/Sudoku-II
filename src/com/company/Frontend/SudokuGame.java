@@ -21,7 +21,7 @@ public class SudokuGame extends javax.swing.JFrame {
         //jPanel1.setLayout(new java.awt.GridLayout(9, 9));
         setLocationRelativeTo(null);
         loadFields();
-        loadboard(grid);
+        loadBoard(grid);
 
     }
 
@@ -1767,7 +1767,13 @@ public class SudokuGame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int[][] grid=unloadBoard();
         runSingleThread valid=new runSingleThread();
-        valid.validate(grid);
+
+        if(valid.validate(grid)){
+            JOptionPane.showMessageDialog(null,"Valid");
+        }
+        else
+            JOptionPane.showMessageDialog(null,"Invalid");
+
     }
 
     private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1998,7 +2004,7 @@ public class SudokuGame extends javax.swing.JFrame {
             cells[8][7]=jTextField80;
             cells[8][8]=jTextField81;
         }
-        public void loadboard(int[][] grid){
+        public void loadBoard(int[][] grid){
        // int[][] grid =Grid.getGrid(filename);
 
         for(int i=0;i<9;i++){

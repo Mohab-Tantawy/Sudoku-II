@@ -4,14 +4,11 @@
  */
 package com.company.Frontend;
 
-import com.company.Backend.Grid;
-import com.company.Backend.PersistenceManager;
-import com.company.Backend.RandomPairs;
-import com.company.Backend.SudokuState;
+import com.company.Backend.*;
 
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -33,9 +30,36 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     public DiffChooserGUI() {
         initComponents();
-        PersistenceManager PM=new PersistenceManager();
-        pm=PM;
+        PersistenceManager pm=new PersistenceManager();
+        this.pm=pm;
         setLocationRelativeTo(null);
+
+        try {
+            pm.initializeFolders();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        SwingUtilities.invokeLater(this::loadCurrent);
+
+
+    }
+    private void loadCurrent(){
+        if(pm.hasUnfinishedGame()){
+
+            try {
+                Game game = pm.loadCurrentGame();
+                SudokuGame newGame= new SudokuGame(game.getGrid(),game.getDifficulty());
+                newGame.setVisible(true);
+                JOptionPane.showMessageDialog(null,"Loaded Current Game");
+                this.dispose();
+
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null,"error\n"+e);
+            }
+
+
+        }
+
     }
 
     /**
@@ -134,22 +158,63 @@ public class DiffChooserGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, filePath);
 
         }
+        int[][] grid=Grid.getGrid(sourceFile);
+        int[][] egrid=grid;
+        int[][] mgrid=grid;
+        int[][] hgrid=grid;
+
+        RandomPairs randomPairs = new RandomPairs();
+        List<int[]> cells=randomPairs.generateDistinctPairs(10);
+        for(int[] p:cells){
+            egrid[p[0]][p[1]]=0;
+        }
+        Game game1= new Game(egrid, GameConstants.Difficulty.EASY);
+        try {
+            pm.saveGame(GameConstants.Difficulty.EASY,game1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        cells=randomPairs.generateDistinctPairs(20);
+        for(int[] p:cells){
+            egrid[p[0]][p[1]]=0;
+        }
+        Game game2= new Game(mgrid, GameConstants.Difficulty.MEDIUM);
+        try {
+            pm.saveGame(GameConstants.Difficulty.MEDIUM,game2);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        cells=randomPairs.generateDistinctPairs(25);
+        for(int[] p:cells){
+            egrid[p[0]][p[1]]=0;
+        }
+        Game game3= new Game(hgrid, GameConstants.Difficulty.HARD);
+        try {
+            pm.saveGame(GameConstants.Difficulty.HARD,game3);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     private void EasyButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if (sourceFile==null){
+        if (!pm.hasGamesForAllLevels()){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
-            int[][] grid=Grid.getGrid(sourceFile);
-            RandomPairs randomPairs = new RandomPairs();
-            List<int[]> cells=randomPairs.generateDistinctPairs(10);
-            for(int[] p:cells){
-                grid[p[0]][p[1]]=0;
+            try {
+                Game game =pm.loadRandomGame(GameConstants.Difficulty.EASY);
+                pm.saveCurrentGame(game);
+                SudokuGame newGame= new SudokuGame(game.getGrid(), GameConstants.Difficulty.EASY);
+                newGame.setVisible(true);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            SudokuGame game= new SudokuGame(grid);
-            game.setVisible(true);
+
             this.dispose();
         }
 
@@ -157,36 +222,38 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     private void MedButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if (sourceFile==null){
+        if (!pm.hasGamesForAllLevels()){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
-            int[][] grid=Grid.getGrid(sourceFile);
-            RandomPairs randomPairs = new RandomPairs();
-            List<int[]> cells=randomPairs.generateDistinctPairs(20);
-            for(int[] p:cells){
-                grid[p[0]][p[1]]=0;
+            try {
+                Game game =pm.loadRandomGame(GameConstants.Difficulty.MEDIUM);
+                pm.saveCurrentGame(game);
+                SudokuGame newGame= new SudokuGame(game.getGrid(), GameConstants.Difficulty.MEDIUM);
+                newGame.setVisible(true);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            SudokuGame game= new SudokuGame(grid);
-            game.setVisible(true);
+
             this.dispose();
         }
     }
 
     private void HardButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if (sourceFile==null){
+        if (!pm.hasGamesForAllLevels()){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
-            int[][] grid=Grid.getGrid(sourceFile);
-            RandomPairs randomPairs = new RandomPairs();
-            List<int[]> cells=randomPairs.generateDistinctPairs(25);
-            for(int[] p:cells){
-                grid[p[0]][p[1]]=0;
+            try {
+                Game game =pm.loadRandomGame(GameConstants.Difficulty.HARD);
+                pm.saveCurrentGame(game);
+                SudokuGame newGame= new SudokuGame(game.getGrid(), GameConstants.Difficulty.HARD);
+                newGame.setVisible(true);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            SudokuGame game= new SudokuGame(grid);
-            game.setVisible(true);
+
             this.dispose();
         }
     }
@@ -222,6 +289,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DiffChooserGUI().setVisible(true);
+
             }
         });
     }

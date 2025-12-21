@@ -39,7 +39,7 @@ public class PersistenceManager {
                 for(Path entry : stream){
                     files.add(entry);
                 }
-                if(files.size() != 0 && files.size() != 2){
+                if(files.size()>2){
                     for(Path file : files){
                         Files.deleteIfExists(file);
                     }
@@ -48,7 +48,7 @@ public class PersistenceManager {
         }
 
     }
-    private void loadLogIntoStack() throws IOException{
+    public void loadLogIntoStack() throws IOException{
         Path logPath = Paths.get(GameConstants.LOG_FILE);
         if(!Files.exists(logPath) || Files.size(logPath) == 0){
             undoStack.clear();
@@ -122,10 +122,13 @@ public class PersistenceManager {
             loadLogIntoStack();
     }
     public Game loadCurrentGame() throws IOException{
-        if(!Files.exists(Paths.get(GameConstants.CURRENT_GAME_FILE)))
+        if(!Files.exists(Paths.get(GameConstants.CURRENT_GAME_FILE))){
+            System.out.println("hi");
             return null;
+        }
+       // System.out.println("hi2");
         Game game;
-        try(BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(new FileReader(GameConstants.CURRENT_GAME_FILE))))){
+        try(BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(GameConstants.CURRENT_GAME_FILE)))){
             String gridData = reader.readLine();
             String levelStr = reader.readLine();
             game = Game.deserialize(gridData, GameConstants.Difficulty.valueOf(levelStr));

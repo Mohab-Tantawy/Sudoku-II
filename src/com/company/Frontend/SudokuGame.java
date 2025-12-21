@@ -17,16 +17,18 @@ import java.io.IOException;
 public class SudokuGame extends javax.swing.JFrame {
     PersistenceManager pm;
     int[][] grid=new int[9][9];
+    GameConstants.Difficulty difficulty;
     /**
      * Creates new form SudokuGame
      */
-    public SudokuGame(int[][] grid) {
+    public SudokuGame(int[][] grid,GameConstants.Difficulty difficulty) {
         initComponents();
         //jPanel1.setLayout(new java.awt.GridLayout(9, 9));
         setLocationRelativeTo(null);
         loadFields();
         loadBoard(grid);
         this.grid=grid;
+        this.difficulty=difficulty;
         PersistenceManager pm=new PersistenceManager();
         this.pm=pm;
 
@@ -1777,6 +1779,11 @@ public class SudokuGame extends javax.swing.JFrame {
 
         if(valid.validate(grid)){
             JOptionPane.showMessageDialog(null,"Valid");
+            try {
+                pm.deleteCurrentGame();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         else
             JOptionPane.showMessageDialog(null,"Invalid");
@@ -1786,11 +1793,14 @@ public class SudokuGame extends javax.swing.JFrame {
     private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         try {
+            pm.loadLogIntoStack();
             Move lastMove=pm.undoLastMove();
             String value= String.valueOf(lastMove.getOldValue());
             cells[lastMove.getX()][lastMove.getY()].setText(value);
             cells[lastMove.getX()][lastMove.getY()].setEditable(true);
             grid[lastMove.getX()][lastMove.getY()]=lastMove.getOldValue();
+            pm.saveCurrentGame(new Game(grid,difficulty));
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"No Moves to Undo");
         }
@@ -1850,7 +1860,7 @@ public class SudokuGame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SudokuGame(Grid.getGrid("sudoku_test.csv")).setVisible(true);
+                new SudokuGame(Grid.getGrid("sudoku_test.csv"), GameConstants.Difficulty.EASY).setVisible(true);
 
             }
         });
@@ -2097,10 +2107,16 @@ public class SudokuGame extends javax.swing.JFrame {
                 grid[r][c]=newValue;
             try {
                 pm.logMove(r,c,newValue,oldValue);
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
                 JOptionPane.showMessageDialog(null, oldValue + " changed to " + newValue + " at " + r + "," + c);
+                try {
+                    pm.saveCurrentGame(new Game(grid,difficulty));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 tf.setEditable(false);
             }
         }

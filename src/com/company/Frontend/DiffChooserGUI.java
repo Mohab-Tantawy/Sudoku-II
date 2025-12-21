@@ -18,7 +18,12 @@ public class DiffChooserGUI extends javax.swing.JFrame {
      * Creates new form DiffChooserGUI
      */
 
-    String sourceFile;
+    public String sourceFile;
+
+    public String getSourceFile() {
+        return sourceFile;
+    }
+
     public DiffChooserGUI() {
         initComponents();
         setLocationRelativeTo(null);

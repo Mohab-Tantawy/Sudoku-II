@@ -4,6 +4,9 @@
  */
 package com.company.Frontend;
 
+import javax.swing.*;
+import com.company.Backend.*;
+
 /**
  *
  * @author YOUSEF SHAWER
@@ -17,6 +20,8 @@ public class SudokuGame extends javax.swing.JFrame {
         initComponents();
         //jPanel1.setLayout(new java.awt.GridLayout(9, 9));
         setLocationRelativeTo(null);
+        loadFields();
+        loadboard();
 
     }
 
@@ -122,12 +127,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridLayout(9, 9));
 
         jTextField1.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField1.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField1.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -142,12 +147,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField1);
 
         jTextField2.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField2.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField2.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -162,12 +167,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField2);
 
         jTextField3.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField3.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField3.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -181,12 +186,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField3.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField3);
 
-        jTextField4.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField4.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -200,12 +205,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField4.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField4);
 
-        jTextField5.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField5.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -219,12 +224,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField5.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField5);
 
-        jTextField6.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField6.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -239,12 +244,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField6);
 
         jTextField7.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField7.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField7.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -259,12 +264,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField7);
 
         jTextField8.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField8.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField8.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -279,12 +284,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField8);
 
         jTextField9.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField9.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField9.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -299,12 +304,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField9);
 
         jTextField10.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField10.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField10.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -319,12 +324,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField10);
 
         jTextField11.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField11.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField11.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -339,12 +344,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField11);
 
         jTextField12.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField12.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField12.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -358,12 +363,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField12.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField12);
 
-        jTextField13.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField13.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -377,12 +382,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField13.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField13);
 
-        jTextField14.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField14.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -396,12 +401,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField14.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField14);
 
-        jTextField15.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField15.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -416,12 +421,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField15);
 
         jTextField16.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField16.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField16.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -436,12 +441,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField16);
 
         jTextField17.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField17.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField17.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -456,12 +461,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField17);
 
         jTextField18.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField18.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField18.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -476,12 +481,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField18);
 
         jTextField19.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField19.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField19.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -496,12 +501,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField19);
 
         jTextField20.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField20.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField20.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -516,12 +521,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField20);
 
         jTextField21.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField21.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField21.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -535,12 +540,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField21.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField21);
 
-        jTextField22.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField22.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -554,12 +559,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField22.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField22);
 
-        jTextField23.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField23.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -573,12 +578,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField23.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField23);
 
-        jTextField24.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField24.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -593,12 +598,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField24);
 
         jTextField25.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField25.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField25.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -613,12 +618,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField25);
 
         jTextField26.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField26.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField26.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -633,12 +638,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField26);
 
         jTextField27.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField27.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField27.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -652,12 +657,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField27.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField27);
 
-        jTextField28.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField28.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -671,12 +676,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField28.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField28);
 
-        jTextField29.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField29.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -690,12 +695,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField29.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField29);
 
-        jTextField30.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField30.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -710,12 +715,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField30);
 
         jTextField31.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField31.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField31.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -730,12 +735,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField31);
 
         jTextField32.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField32.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField32.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -750,12 +755,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField32);
 
         jTextField33.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField33.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField33.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -769,12 +774,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField33.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField33);
 
-        jTextField34.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField34.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -788,12 +793,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField34.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField34);
 
-        jTextField35.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField35.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -807,12 +812,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField35.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField35);
 
-        jTextField36.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField36.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -826,12 +831,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField36.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField36);
 
-        jTextField37.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField37.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -845,12 +850,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField37.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField37);
 
-        jTextField38.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField38.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -864,12 +869,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField38.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField38);
 
-        jTextField39.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField39.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -884,12 +889,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField39);
 
         jTextField40.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField40.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField40.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -904,12 +909,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField40);
 
         jTextField41.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField41.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField41.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -924,12 +929,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField41);
 
         jTextField42.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField42.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField42.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -943,12 +948,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField42.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField42);
 
-        jTextField43.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField43.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -962,12 +967,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField43.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField43);
 
-        jTextField44.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField44.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -981,12 +986,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField44.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField44);
 
-        jTextField45.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField45.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1000,12 +1005,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField45.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField45);
 
-        jTextField46.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField46.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1019,12 +1024,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField46.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField46);
 
-        jTextField47.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField47.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1038,12 +1043,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField47.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField47);
 
-        jTextField48.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField48.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1058,12 +1063,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField48);
 
         jTextField49.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField49.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField49.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1078,12 +1083,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField49);
 
         jTextField50.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField50.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField50.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1098,12 +1103,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField50);
 
         jTextField51.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField51.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField51.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1117,12 +1122,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField51.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField51);
 
-        jTextField52.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField52.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1136,12 +1141,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField52.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField52);
 
-        jTextField53.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField53.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1155,12 +1160,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField53.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField53);
 
-        jTextField54.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField54.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1175,12 +1180,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField54);
 
         jTextField55.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField55.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField55.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1195,12 +1200,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField55);
 
         jTextField56.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField56.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField56.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1215,12 +1220,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField56);
 
         jTextField57.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField57.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField57.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1234,12 +1239,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField57.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField57);
 
-        jTextField58.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField58.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1253,12 +1258,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField58.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField58);
 
-        jTextField59.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField59.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1272,12 +1277,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField59.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField59);
 
-        jTextField60.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField60.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1292,12 +1297,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField60);
 
         jTextField61.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField61.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField61.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1312,12 +1317,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField61);
 
         jTextField62.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField62.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField62.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1332,12 +1337,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField62);
 
         jTextField63.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField63.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField63.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1352,12 +1357,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField63);
 
         jTextField64.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField64.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField64.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1372,12 +1377,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField64);
 
         jTextField65.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField65.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField65.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1392,12 +1397,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField65);
 
         jTextField66.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField66.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField66.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1411,12 +1416,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField66.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField66);
 
-        jTextField67.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField67.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1430,12 +1435,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField67.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField67);
 
-        jTextField68.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField68.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1449,12 +1454,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField68.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField68);
 
-        jTextField69.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField69.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1469,12 +1474,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField69);
 
         jTextField70.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField70.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField70.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1489,12 +1494,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField70);
 
         jTextField71.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField71.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField71.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1509,12 +1514,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField71);
 
         jTextField72.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField72.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField72.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1529,12 +1534,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField72);
 
         jTextField73.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField73.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField73.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1549,12 +1554,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField73);
 
         jTextField74.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField74.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField74.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1569,12 +1574,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField74);
 
         jTextField75.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField75.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField75.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1588,12 +1593,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField75.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField75);
 
-        jTextField76.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField76.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1607,12 +1612,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField76.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField76);
 
-        jTextField77.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField77.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1626,12 +1631,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jTextField77.setPreferredSize(new java.awt.Dimension(10, 10));
         jPanel1.add(jTextField77);
 
-        jTextField78.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField78.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1646,12 +1651,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField78);
 
         jTextField79.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField79.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField79.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1666,12 +1671,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField79);
 
         jTextField80.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField80.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField80.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1686,12 +1691,12 @@ public class SudokuGame extends javax.swing.JFrame {
         jPanel1.add(jTextField80);
 
         jTextField81.setBackground(new java.awt.Color(245, 245, 245));
-        jTextField81.setDocument(new javax.swing.text.PlainDocument(){
+        jTextField81.setDocument(new javax.swing.text.PlainDocument() {
             @Override
-            public void insertString(int offs,String str, javax.swing.text.AttributeSet a)
-                    throws javax.swing.text.BadLocationException{
-                if(str==null) return;
-                if(getLength() + str.length()<=1 && str.matches("[1-9]")){
+            public void insertString(int offs, String str, javax.swing.text.AttributeSet a)
+                    throws javax.swing.text.BadLocationException {
+                if (str == null) return;
+                if (getLength() + str.length() <= 1 && str.matches("[1-9]")) {
                     super.insertString(offs, str, a);
                 }
             }
@@ -1773,6 +1778,7 @@ public class SudokuGame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1806,91 +1812,197 @@ public class SudokuGame extends javax.swing.JFrame {
         });
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     // Variables declaration - do not modify
-    private javax.swing.JButton SolveButton;
-    private javax.swing.JButton UndoButton;
-    private javax.swing.JButton VerifyButton;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField52;
-    private javax.swing.JTextField jTextField53;
-    private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
-    private javax.swing.JTextField jTextField62;
-    private javax.swing.JTextField jTextField63;
-    private javax.swing.JTextField jTextField64;
-    private javax.swing.JTextField jTextField65;
-    private javax.swing.JTextField jTextField66;
-    private javax.swing.JTextField jTextField67;
-    private javax.swing.JTextField jTextField68;
-    private javax.swing.JTextField jTextField69;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField70;
-    private javax.swing.JTextField jTextField71;
-    private javax.swing.JTextField jTextField72;
-    private javax.swing.JTextField jTextField73;
-    private javax.swing.JTextField jTextField74;
-    private javax.swing.JTextField jTextField75;
-    private javax.swing.JTextField jTextField76;
-    private javax.swing.JTextField jTextField77;
-    private javax.swing.JTextField jTextField78;
-    private javax.swing.JTextField jTextField79;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField80;
-    private javax.swing.JTextField jTextField81;
-    private javax.swing.JTextField jTextField9;
-    // End of variables declaration
+
+        private javax.swing.JButton SolveButton;
+        private javax.swing.JButton UndoButton;
+        private javax.swing.JButton VerifyButton;
+        private javax.swing.JPanel jPanel1;
+        private javax.swing.JTextField jTextField1;
+        private javax.swing.JTextField jTextField10;
+        private javax.swing.JTextField jTextField11;
+        private javax.swing.JTextField jTextField12;
+        private javax.swing.JTextField jTextField13;
+        private javax.swing.JTextField jTextField14;
+        private javax.swing.JTextField jTextField15;
+        private javax.swing.JTextField jTextField16;
+        private javax.swing.JTextField jTextField17;
+        private javax.swing.JTextField jTextField18;
+        private javax.swing.JTextField jTextField19;
+        private javax.swing.JTextField jTextField2;
+        private javax.swing.JTextField jTextField20;
+        private javax.swing.JTextField jTextField21;
+        private javax.swing.JTextField jTextField22;
+        private javax.swing.JTextField jTextField23;
+        private javax.swing.JTextField jTextField24;
+        private javax.swing.JTextField jTextField25;
+        private javax.swing.JTextField jTextField26;
+        private javax.swing.JTextField jTextField27;
+        private javax.swing.JTextField jTextField28;
+        private javax.swing.JTextField jTextField29;
+        private javax.swing.JTextField jTextField3;
+        private javax.swing.JTextField jTextField30;
+        private javax.swing.JTextField jTextField31;
+        private javax.swing.JTextField jTextField32;
+        private javax.swing.JTextField jTextField33;
+        private javax.swing.JTextField jTextField34;
+        private javax.swing.JTextField jTextField35;
+        private javax.swing.JTextField jTextField36;
+        private javax.swing.JTextField jTextField37;
+        private javax.swing.JTextField jTextField38;
+        private javax.swing.JTextField jTextField39;
+        private javax.swing.JTextField jTextField4;
+        private javax.swing.JTextField jTextField40;
+        private javax.swing.JTextField jTextField41;
+        private javax.swing.JTextField jTextField42;
+        private javax.swing.JTextField jTextField43;
+        private javax.swing.JTextField jTextField44;
+        private javax.swing.JTextField jTextField45;
+        private javax.swing.JTextField jTextField46;
+        private javax.swing.JTextField jTextField47;
+        private javax.swing.JTextField jTextField48;
+        private javax.swing.JTextField jTextField49;
+        private javax.swing.JTextField jTextField5;
+        private javax.swing.JTextField jTextField50;
+        private javax.swing.JTextField jTextField51;
+        private javax.swing.JTextField jTextField52;
+        private javax.swing.JTextField jTextField53;
+        private javax.swing.JTextField jTextField54;
+        private javax.swing.JTextField jTextField55;
+        private javax.swing.JTextField jTextField56;
+        private javax.swing.JTextField jTextField57;
+        private javax.swing.JTextField jTextField58;
+        private javax.swing.JTextField jTextField59;
+        private javax.swing.JTextField jTextField6;
+        private javax.swing.JTextField jTextField60;
+        private javax.swing.JTextField jTextField61;
+        private javax.swing.JTextField jTextField62;
+        private javax.swing.JTextField jTextField63;
+        private javax.swing.JTextField jTextField64;
+        private javax.swing.JTextField jTextField65;
+        private javax.swing.JTextField jTextField66;
+        private javax.swing.JTextField jTextField67;
+        private javax.swing.JTextField jTextField68;
+        private javax.swing.JTextField jTextField69;
+        private javax.swing.JTextField jTextField7;
+        private javax.swing.JTextField jTextField70;
+        private javax.swing.JTextField jTextField71;
+        private javax.swing.JTextField jTextField72;
+        private javax.swing.JTextField jTextField73;
+        private javax.swing.JTextField jTextField74;
+        private javax.swing.JTextField jTextField75;
+        private javax.swing.JTextField jTextField76;
+        private javax.swing.JTextField jTextField77;
+        private javax.swing.JTextField jTextField78;
+        private javax.swing.JTextField jTextField79;
+        private javax.swing.JTextField jTextField8;
+        private javax.swing.JTextField jTextField80;
+        private javax.swing.JTextField jTextField81;
+        private javax.swing.JTextField jTextField9;
+        // End of variables declaration
+    // </editor-fold>
+
+        JTextField[][] cells=new JTextField[9][9];
+        public void loadFields(){
+            cells[0][0]=jTextField1;
+            cells[0][1]=jTextField2;
+            cells[0][2]=jTextField3;
+            cells[0][3]=jTextField4;
+            cells[0][4]=jTextField5;
+            cells[0][5]=jTextField6;
+            cells[0][6]=jTextField7;
+            cells[0][7]=jTextField8;
+            cells[0][8]=jTextField9;
+
+            cells[1][0]=jTextField10;
+            cells[1][1]=jTextField11;
+            cells[1][2]=jTextField12;
+            cells[1][3]=jTextField13;
+            cells[1][4]=jTextField14;
+            cells[1][5]=jTextField15;
+            cells[1][6]=jTextField16;
+            cells[1][7]=jTextField17;
+            cells[1][8]=jTextField18;
+
+            cells[2][0]=jTextField19;
+            cells[2][1]=jTextField20;
+            cells[2][2]=jTextField21;
+            cells[2][3]=jTextField22;
+            cells[2][4]=jTextField23;
+            cells[2][5]=jTextField24;
+            cells[2][6]=jTextField25;
+            cells[2][7]=jTextField26;
+            cells[2][8]=jTextField27;
+
+            cells[3][0]=jTextField28;
+            cells[3][1]=jTextField29;
+            cells[3][2]=jTextField30;
+            cells[3][3]=jTextField31;
+            cells[3][4]=jTextField32;
+            cells[3][5]=jTextField33;
+            cells[3][6]=jTextField34;
+            cells[3][7]=jTextField35;
+            cells[3][8]=jTextField36;
+
+            cells[4][0]=jTextField37;
+            cells[4][1]=jTextField38;
+            cells[4][2]=jTextField39;
+            cells[4][3]=jTextField40;
+            cells[4][4]=jTextField41;
+            cells[4][5]=jTextField42;
+            cells[4][6]=jTextField43;
+            cells[4][7]=jTextField44;
+            cells[4][8]=jTextField45;
+
+            cells[5][0]=jTextField46;
+            cells[5][1]=jTextField47;
+            cells[5][2]=jTextField48;
+            cells[5][3]=jTextField49;
+            cells[5][4]=jTextField50;
+            cells[5][5]=jTextField51;
+            cells[5][6]=jTextField52;
+            cells[5][7]=jTextField53;
+            cells[5][8]=jTextField54;
+
+            cells[6][0]=jTextField55;
+            cells[6][1]=jTextField56;
+            cells[6][2]=jTextField57;
+            cells[6][3]=jTextField58;
+            cells[6][4]=jTextField59;
+            cells[6][5]=jTextField60;
+            cells[6][6]=jTextField61;
+            cells[6][7]=jTextField62;
+            cells[6][8]=jTextField63;
+
+            cells[7][0]=jTextField64;
+            cells[7][1]=jTextField65;
+            cells[7][2]=jTextField66;
+            cells[7][3]=jTextField67;
+            cells[7][4]=jTextField68;
+            cells[7][5]=jTextField69;
+            cells[7][6]=jTextField70;
+            cells[7][7]=jTextField71;
+            cells[7][8]=jTextField72;
+
+            cells[8][0]=jTextField73;
+            cells[8][1]=jTextField74;
+            cells[8][2]=jTextField75;
+            cells[8][3]=jTextField76;
+            cells[8][4]=jTextField77;
+            cells[8][5]=jTextField78;
+            cells[8][6]=jTextField79;
+            cells[8][7]=jTextField80;
+            cells[8][8]=jTextField81;
+        }
+        public void loadboard(){
+        int[][] grid =Grid.getGrid("sudoku_test.csv");
+
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                cells[i][j].setText(String.valueOf(grid[i][j]));
+            }
+        }
+
+        }
 }

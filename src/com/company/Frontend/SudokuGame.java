@@ -7,6 +7,8 @@ package com.company.Frontend;
 import javax.swing.*;
 import com.company.Backend.*;
 
+import java.awt.*;
+
 /**
  *
  * @author YOUSEF SHAWER
@@ -1782,6 +1784,22 @@ public class SudokuGame extends javax.swing.JFrame {
 
     private void SolveButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        if(Game.getEmptyCellCount(unloadBoard())!=5){
+            JOptionPane.showMessageDialog(null,"You Need Exactly 5 Empty Spaces!");
+        }
+        else {
+            SudokuSolver solver = new SudokuSolver();
+            try {
+               int[][] result= solver.solveGame(unloadBoard());
+               for(int i=0;i<5;i++){
+                   cells[result[i][0]][result[i][1]].setText(String.valueOf(result[i][2]));
+                   cells[result[i][0]][result[i][1]].setBackground(new Color(210,240,210));
+                   cells[result[i][0]][result[i][1]].setEditable(false);
+               }
+            } catch (SudokuSolver.InvalidGame e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
@@ -2003,6 +2021,8 @@ public class SudokuGame extends javax.swing.JFrame {
             cells[8][6]=jTextField79;
             cells[8][7]=jTextField80;
             cells[8][8]=jTextField81;
+
+
         }
         public void loadBoard(int[][] grid){
        // int[][] grid =Grid.getGrid(filename);
@@ -2031,4 +2051,5 @@ public class SudokuGame extends javax.swing.JFrame {
             }
             return grid;
         }
+
 }

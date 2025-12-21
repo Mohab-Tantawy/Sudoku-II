@@ -6,11 +6,13 @@ package com.company.Frontend;
 
 import com.company.Backend.Grid;
 import com.company.Backend.PersistenceManager;
+import com.company.Backend.RandomPairs;
 import com.company.Backend.SudokuState;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.util.List;
 
 /**
  *
@@ -138,7 +140,13 @@ public class DiffChooserGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
-            SudokuGame game= new SudokuGame(Grid.getGrid(sourceFile));
+            int[][] grid=Grid.getGrid(sourceFile);
+            RandomPairs randomPairs = new RandomPairs();
+            List<int[]> cells=randomPairs.generateDistinctPairs(10);
+            for(int[] p:cells){
+                grid[p[0]][p[1]]=0;
+            }
+            SudokuGame game= new SudokuGame(grid);
             game.setVisible(true);
             this.dispose();
         }
@@ -151,7 +159,13 @@ public class DiffChooserGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
-            SudokuGame game= new SudokuGame(Grid.getGrid(sourceFile));
+            int[][] grid=Grid.getGrid(sourceFile);
+            RandomPairs randomPairs = new RandomPairs();
+            List<int[]> cells=randomPairs.generateDistinctPairs(20);
+            for(int[] p:cells){
+                grid[p[0]][p[1]]=0;
+            }
+            SudokuGame game= new SudokuGame(grid);
             game.setVisible(true);
             this.dispose();
         }
@@ -163,7 +177,13 @@ public class DiffChooserGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
-            SudokuGame game= new SudokuGame(Grid.getGrid(sourceFile));
+            int[][] grid=Grid.getGrid(sourceFile);
+            RandomPairs randomPairs = new RandomPairs();
+            List<int[]> cells=randomPairs.generateDistinctPairs(25);
+            for(int[] p:cells){
+                grid[p[0]][p[1]]=0;
+            }
+            SudokuGame game= new SudokuGame(grid);
             game.setVisible(true);
             this.dispose();
         }

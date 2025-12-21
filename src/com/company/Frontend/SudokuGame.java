@@ -8,13 +8,15 @@ import javax.swing.*;
 import com.company.Backend.*;
 
 import java.awt.*;
+import java.io.IOException;
 
 /**
  *
  * @author YOUSEF SHAWER
  */
 public class SudokuGame extends javax.swing.JFrame {
-
+    PersistenceManager pm;
+    int[][] grid=new int[9][9];
     /**
      * Creates new form SudokuGame
      */
@@ -24,6 +26,9 @@ public class SudokuGame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         loadFields();
         loadBoard(grid);
+        this.grid=grid;
+        PersistenceManager pm=new PersistenceManager();
+        this.pm=pm;
 
     }
 
@@ -1780,6 +1785,18 @@ public class SudokuGame extends javax.swing.JFrame {
 
     private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        try {
+            Move lastMove=pm.undoLastMove();
+            String value= String.valueOf(lastMove.getOldValue());
+            cells[lastMove.getX()][lastMove.getY()].setText(value);
+            cells[lastMove.getX()][lastMove.getY()].setEditable(true);
+            grid[lastMove.getX()][lastMove.getY()]=lastMove.getOldValue();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"No Moves to Undo");
+        }
+
+
+
     }
 
     private void SolveButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -2022,6 +2039,14 @@ public class SudokuGame extends javax.swing.JFrame {
             cells[8][7]=jTextField80;
             cells[8][8]=jTextField81;
 
+            for(int i=0;i<9;i++){
+                for(int j=0;j<9;j++){
+                    JTextField tf=cells[i][j];
+                    int r=i;
+                    int c=j;
+                    cells[i][j].addActionListener(e->confirm(tf,r,c));
+                }
+            }
 
         }
         public void loadBoard(int[][] grid){
@@ -2050,6 +2075,34 @@ public class SudokuGame extends javax.swing.JFrame {
                 }
             }
             return grid;
+        }
+        private void confirm(JTextField tf, int r, int c){
+
+            int oldValue=grid[r][c];
+            int newValue;
+            if(tf.getText().equals("")){
+            newValue=0;
+            }
+            else {
+                newValue=Integer.parseInt(tf.getText());
+            }
+
+            if(newValue==oldValue){
+                return;
+            }
+            else if(!tf.isEditable()){
+                return;
+            }
+            else {
+                grid[r][c]=newValue;
+            try {
+                pm.logMove(r,c,newValue,oldValue);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+                JOptionPane.showMessageDialog(null, oldValue + " changed to " + newValue + " at " + r + "," + c);
+                tf.setEditable(false);
+            }
         }
 
 }

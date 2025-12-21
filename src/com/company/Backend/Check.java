@@ -10,37 +10,41 @@ package com.company.Backend;
     }
 
 
-    public boolean checkRow(int row){
+    public int checkRow(int row){
         row--;
         boolean[] seen=new boolean[10];
         for(int col=0;col<9;col++) {
             int num = grid[row][col];
-            if (num != 0) {
-                if (seen[num]) {
-                    return false;
+            if (num == 0) {
+                return 2;
+            }
+              else  if (seen[num]) {
+                    return 0;
                 }
                 seen[num] = true;
-            }
+
         }
-        return true;
+        return 1;
     }
 
-    public boolean checkColumn(int col){
+    public int checkColumn(int col){
         col--;
         boolean[] seen=new boolean[10];
         for(int row=0;row<9;row++) {
             int num = grid[row][col];
-            if (num != 0) {
+            if (num == 0) {
+                return 2;
+            }
                 if (seen[num]) {
-                    return false;
+                    return 0;
                 }
                 seen[num] = true;
-            }
+
         }
-        return true;
+        return 1;
     }
 
-    public boolean checkBox(int box){
+    public int checkBox(int box){
         boolean[] seen=new boolean[10];
         box--;
         int brow= (box/3)*3;
@@ -48,15 +52,17 @@ package com.company.Backend;
         for(int row=brow;row<brow+3;row++){
             for(int col=bcol;col<bcol+3;col++) {
                 int num = grid[row][col];
-                if (num != 0) {
+                if (num == 0) {
+                    return 2;
+                }
                     if (seen[num]) {
-                        return false;
+                        return 0;
                     }
                     seen[num] = true;
-                }
+
             }
         }
-        return true;
+        return 1;
     }
 
     public void printRepeatedinRow(int row){

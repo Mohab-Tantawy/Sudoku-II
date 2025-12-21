@@ -1765,6 +1765,9 @@ public class SudokuGame extends javax.swing.JFrame {
 
     private void VerifyButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        int[][] grid=unloadBoard();
+        runSingleThread valid=new runSingleThread();
+        valid.validate(grid);
     }
 
     private void UndoButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -2004,5 +2007,19 @@ public class SudokuGame extends javax.swing.JFrame {
             }
         }
 
+        }
+        public int[][] unloadBoard(){
+            int[][] grid=new int[9][9];
+            for(int i =0;i<9;i++){
+                for(int j= 0;j<9;j++){
+                    if(cells[i][j].getText().equals("")){
+                        grid[i][j]=0;
+                    }
+                    else
+                        grid[i][j]=Integer.parseInt(cells[i][j].getText());
+
+                }
+            }
+            return grid;
         }
 }

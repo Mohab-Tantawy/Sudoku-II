@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Backend;
 
 public class runSingleThread implements SudokuValidator {
 

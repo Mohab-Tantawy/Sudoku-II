@@ -4,6 +4,10 @@
  */
 package com.company.Frontend;
 
+import com.company.Backend.Grid;
+import com.company.Backend.PersistenceManager;
+import com.company.Backend.SudokuState;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -26,6 +30,8 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     public DiffChooserGUI() {
         initComponents();
+        PersistenceManager manager=new PersistenceManager();
+
         setLocationRelativeTo(null);
     }
 
@@ -131,6 +137,11 @@ public class DiffChooserGUI extends javax.swing.JFrame {
         if (sourceFile==null){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
+        else {
+            SudokuGame game= new SudokuGame(Grid.getGrid(sourceFile));
+            game.setVisible(true);
+            this.dispose();
+        }
 
     }
 
@@ -139,12 +150,22 @@ public class DiffChooserGUI extends javax.swing.JFrame {
         if (sourceFile==null){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
+        else {
+            SudokuGame game= new SudokuGame(Grid.getGrid(sourceFile));
+            game.setVisible(true);
+            this.dispose();
+        }
     }
 
     private void HardButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if (sourceFile==null){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
+        }
+        else {
+            SudokuGame game= new SudokuGame(Grid.getGrid(sourceFile));
+            game.setVisible(true);
+            this.dispose();
         }
     }
 

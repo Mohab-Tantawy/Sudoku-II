@@ -16,12 +16,12 @@ public class SudokuGame extends javax.swing.JFrame {
     /**
      * Creates new form SudokuGame
      */
-    public SudokuGame() {
+    public SudokuGame(int[][] grid) {
         initComponents();
         //jPanel1.setLayout(new java.awt.GridLayout(9, 9));
         setLocationRelativeTo(null);
         loadFields();
-        loadboard();
+        loadboard(grid);
 
     }
 
@@ -1809,7 +1809,7 @@ public class SudokuGame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SudokuGame().setVisible(true);
+                new SudokuGame(Grid.getGrid("sudoku_test.csv")).setVisible(true);
 
             }
         });
@@ -1998,12 +1998,15 @@ public class SudokuGame extends javax.swing.JFrame {
             cells[8][7]=jTextField80;
             cells[8][8]=jTextField81;
         }
-        public void loadboard(){
-        int[][] grid =Grid.getGrid("sudoku_test.csv");
+        public void loadboard(int[][] grid){
+       // int[][] grid =Grid.getGrid(filename);
 
         for(int i=0;i<9;i++){
             for(int j=0;j<9;j++){
                 cells[i][j].setText(String.valueOf(grid[i][j]));
+                if(grid[i][j]!=0){
+                    cells[i][j].setEditable(false);
+                }
             }
         }
 

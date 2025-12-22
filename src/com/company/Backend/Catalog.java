@@ -1,5 +1,7 @@
 package com.company.Backend;
 
+import com.company.Backend.*;
+
 public class Catalog {
     private PersistenceManager persistenceManager;
 

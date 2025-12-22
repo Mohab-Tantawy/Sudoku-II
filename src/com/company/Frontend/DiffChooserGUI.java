@@ -23,6 +23,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     public String sourceFile;
     private PersistenceManager pm;
+    private Catalog catalog;
 
     public String getSourceFile() {
         return sourceFile;
@@ -30,6 +31,8 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     public DiffChooserGUI() {
         initComponents();
+        Catalog catalog= new Catalog(pm);
+        this.catalog=catalog;
         PersistenceManager pm=new PersistenceManager();
         this.pm=pm;
         setLocationRelativeTo(null);
@@ -44,7 +47,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     }
     private void loadCurrent(){
-        if(pm.hasUnfinishedGame()){
+        if(catalog.hasUnfinished()){
 
             try {
                 Game game = pm.loadCurrentGame();
@@ -202,7 +205,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     private void EasyButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if (!pm.hasGamesForAllLevels()){
+        if (!catalog.hasEasyMediumHard()){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
@@ -222,12 +225,12 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     private void MedButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if (!pm.hasGamesForAllLevels()){
+        if (!catalog.hasEasyMediumHard()){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {
             try {
-                Game game =pm.loadRandomGame(GameConstants.Difficulty.MEDIUM);
+                Game game =pm.loadRandomGame(GameConstants.Difficulty.EASY);
                 pm.saveCurrentGame(game);
                 SudokuGame newGame= new SudokuGame(game.getGrid(), GameConstants.Difficulty.MEDIUM);
                 newGame.setVisible(true);
@@ -241,7 +244,7 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     private void HardButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        if (!pm.hasGamesForAllLevels()){
+        if (!catalog.hasEasyMediumHard()){
             JOptionPane.showMessageDialog(null,"Please Choose a Source File!!");
         }
         else {

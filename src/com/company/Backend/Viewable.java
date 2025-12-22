@@ -2,7 +2,7 @@ package com.company.Backend;
 
 import java.io.IOException;
 
-interface Viewable
+public interface Viewable
 {
     Catalog getCatalog();
     // Returns a random game with the specified difficulty

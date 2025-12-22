@@ -15,6 +15,7 @@ import java.io.IOException;
  * @author YOUSEF SHAWER
  */
 public class SudokuGame extends javax.swing.JFrame {
+    private Controllable guiController;
     PersistenceManager pm;
     int[][] grid=new int[9][9];
     GameConstants.Difficulty difficulty;
@@ -1817,12 +1818,12 @@ public class SudokuGame extends javax.swing.JFrame {
         else {
             SudokuSolver solver = new SudokuSolver();
             try {
-               int[][] result= solver.solveGame(unloadBoard());
-               for(int i=0;i<5;i++){
-                   cells[result[i][0]][result[i][1]].setText(String.valueOf(result[i][2]));
-                   cells[result[i][0]][result[i][1]].setBackground(new Color(210,240,210));
-                   cells[result[i][0]][result[i][1]].setEditable(false);
-               }
+                int[][] result= solver.solveGame(unloadBoard());
+                for(int i=0;i<5;i++){
+                    cells[result[i][0]][result[i][1]].setText(String.valueOf(result[i][2]));
+                    cells[result[i][0]][result[i][1]].setBackground(new Color(210,240,210));
+                    cells[result[i][0]][result[i][1]].setEditable(false);
+                }
             } catch (SudokuSolver.InvalidGame e) {
                 throw new RuntimeException(e);
             }
@@ -1869,198 +1870,198 @@ public class SudokuGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     // Variables declaration - do not modify
 
-        private javax.swing.JButton SolveButton;
-        private javax.swing.JButton UndoButton;
-        private javax.swing.JButton VerifyButton;
-        private javax.swing.JPanel jPanel1;
-        private javax.swing.JTextField jTextField1;
-        private javax.swing.JTextField jTextField10;
-        private javax.swing.JTextField jTextField11;
-        private javax.swing.JTextField jTextField12;
-        private javax.swing.JTextField jTextField13;
-        private javax.swing.JTextField jTextField14;
-        private javax.swing.JTextField jTextField15;
-        private javax.swing.JTextField jTextField16;
-        private javax.swing.JTextField jTextField17;
-        private javax.swing.JTextField jTextField18;
-        private javax.swing.JTextField jTextField19;
-        private javax.swing.JTextField jTextField2;
-        private javax.swing.JTextField jTextField20;
-        private javax.swing.JTextField jTextField21;
-        private javax.swing.JTextField jTextField22;
-        private javax.swing.JTextField jTextField23;
-        private javax.swing.JTextField jTextField24;
-        private javax.swing.JTextField jTextField25;
-        private javax.swing.JTextField jTextField26;
-        private javax.swing.JTextField jTextField27;
-        private javax.swing.JTextField jTextField28;
-        private javax.swing.JTextField jTextField29;
-        private javax.swing.JTextField jTextField3;
-        private javax.swing.JTextField jTextField30;
-        private javax.swing.JTextField jTextField31;
-        private javax.swing.JTextField jTextField32;
-        private javax.swing.JTextField jTextField33;
-        private javax.swing.JTextField jTextField34;
-        private javax.swing.JTextField jTextField35;
-        private javax.swing.JTextField jTextField36;
-        private javax.swing.JTextField jTextField37;
-        private javax.swing.JTextField jTextField38;
-        private javax.swing.JTextField jTextField39;
-        private javax.swing.JTextField jTextField4;
-        private javax.swing.JTextField jTextField40;
-        private javax.swing.JTextField jTextField41;
-        private javax.swing.JTextField jTextField42;
-        private javax.swing.JTextField jTextField43;
-        private javax.swing.JTextField jTextField44;
-        private javax.swing.JTextField jTextField45;
-        private javax.swing.JTextField jTextField46;
-        private javax.swing.JTextField jTextField47;
-        private javax.swing.JTextField jTextField48;
-        private javax.swing.JTextField jTextField49;
-        private javax.swing.JTextField jTextField5;
-        private javax.swing.JTextField jTextField50;
-        private javax.swing.JTextField jTextField51;
-        private javax.swing.JTextField jTextField52;
-        private javax.swing.JTextField jTextField53;
-        private javax.swing.JTextField jTextField54;
-        private javax.swing.JTextField jTextField55;
-        private javax.swing.JTextField jTextField56;
-        private javax.swing.JTextField jTextField57;
-        private javax.swing.JTextField jTextField58;
-        private javax.swing.JTextField jTextField59;
-        private javax.swing.JTextField jTextField6;
-        private javax.swing.JTextField jTextField60;
-        private javax.swing.JTextField jTextField61;
-        private javax.swing.JTextField jTextField62;
-        private javax.swing.JTextField jTextField63;
-        private javax.swing.JTextField jTextField64;
-        private javax.swing.JTextField jTextField65;
-        private javax.swing.JTextField jTextField66;
-        private javax.swing.JTextField jTextField67;
-        private javax.swing.JTextField jTextField68;
-        private javax.swing.JTextField jTextField69;
-        private javax.swing.JTextField jTextField7;
-        private javax.swing.JTextField jTextField70;
-        private javax.swing.JTextField jTextField71;
-        private javax.swing.JTextField jTextField72;
-        private javax.swing.JTextField jTextField73;
-        private javax.swing.JTextField jTextField74;
-        private javax.swing.JTextField jTextField75;
-        private javax.swing.JTextField jTextField76;
-        private javax.swing.JTextField jTextField77;
-        private javax.swing.JTextField jTextField78;
-        private javax.swing.JTextField jTextField79;
-        private javax.swing.JTextField jTextField8;
-        private javax.swing.JTextField jTextField80;
-        private javax.swing.JTextField jTextField81;
-        private javax.swing.JTextField jTextField9;
-        // End of variables declaration
+    private javax.swing.JButton SolveButton;
+    private javax.swing.JButton UndoButton;
+    private javax.swing.JButton VerifyButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField25;
+    private javax.swing.JTextField jTextField26;
+    private javax.swing.JTextField jTextField27;
+    private javax.swing.JTextField jTextField28;
+    private javax.swing.JTextField jTextField29;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField30;
+    private javax.swing.JTextField jTextField31;
+    private javax.swing.JTextField jTextField32;
+    private javax.swing.JTextField jTextField33;
+    private javax.swing.JTextField jTextField34;
+    private javax.swing.JTextField jTextField35;
+    private javax.swing.JTextField jTextField36;
+    private javax.swing.JTextField jTextField37;
+    private javax.swing.JTextField jTextField38;
+    private javax.swing.JTextField jTextField39;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField40;
+    private javax.swing.JTextField jTextField41;
+    private javax.swing.JTextField jTextField42;
+    private javax.swing.JTextField jTextField43;
+    private javax.swing.JTextField jTextField44;
+    private javax.swing.JTextField jTextField45;
+    private javax.swing.JTextField jTextField46;
+    private javax.swing.JTextField jTextField47;
+    private javax.swing.JTextField jTextField48;
+    private javax.swing.JTextField jTextField49;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField50;
+    private javax.swing.JTextField jTextField51;
+    private javax.swing.JTextField jTextField52;
+    private javax.swing.JTextField jTextField53;
+    private javax.swing.JTextField jTextField54;
+    private javax.swing.JTextField jTextField55;
+    private javax.swing.JTextField jTextField56;
+    private javax.swing.JTextField jTextField57;
+    private javax.swing.JTextField jTextField58;
+    private javax.swing.JTextField jTextField59;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField60;
+    private javax.swing.JTextField jTextField61;
+    private javax.swing.JTextField jTextField62;
+    private javax.swing.JTextField jTextField63;
+    private javax.swing.JTextField jTextField64;
+    private javax.swing.JTextField jTextField65;
+    private javax.swing.JTextField jTextField66;
+    private javax.swing.JTextField jTextField67;
+    private javax.swing.JTextField jTextField68;
+    private javax.swing.JTextField jTextField69;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField70;
+    private javax.swing.JTextField jTextField71;
+    private javax.swing.JTextField jTextField72;
+    private javax.swing.JTextField jTextField73;
+    private javax.swing.JTextField jTextField74;
+    private javax.swing.JTextField jTextField75;
+    private javax.swing.JTextField jTextField76;
+    private javax.swing.JTextField jTextField77;
+    private javax.swing.JTextField jTextField78;
+    private javax.swing.JTextField jTextField79;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField80;
+    private javax.swing.JTextField jTextField81;
+    private javax.swing.JTextField jTextField9;
+    // End of variables declaration
     // </editor-fold>
 
-        JTextField[][] cells=new JTextField[9][9];
-        public void loadFields(){
-            cells[0][0]=jTextField1;
-            cells[0][1]=jTextField2;
-            cells[0][2]=jTextField3;
-            cells[0][3]=jTextField4;
-            cells[0][4]=jTextField5;
-            cells[0][5]=jTextField6;
-            cells[0][6]=jTextField7;
-            cells[0][7]=jTextField8;
-            cells[0][8]=jTextField9;
+    JTextField[][] cells=new JTextField[9][9];
+    public void loadFields(){
+        cells[0][0]=jTextField1;
+        cells[0][1]=jTextField2;
+        cells[0][2]=jTextField3;
+        cells[0][3]=jTextField4;
+        cells[0][4]=jTextField5;
+        cells[0][5]=jTextField6;
+        cells[0][6]=jTextField7;
+        cells[0][7]=jTextField8;
+        cells[0][8]=jTextField9;
 
-            cells[1][0]=jTextField10;
-            cells[1][1]=jTextField11;
-            cells[1][2]=jTextField12;
-            cells[1][3]=jTextField13;
-            cells[1][4]=jTextField14;
-            cells[1][5]=jTextField15;
-            cells[1][6]=jTextField16;
-            cells[1][7]=jTextField17;
-            cells[1][8]=jTextField18;
+        cells[1][0]=jTextField10;
+        cells[1][1]=jTextField11;
+        cells[1][2]=jTextField12;
+        cells[1][3]=jTextField13;
+        cells[1][4]=jTextField14;
+        cells[1][5]=jTextField15;
+        cells[1][6]=jTextField16;
+        cells[1][7]=jTextField17;
+        cells[1][8]=jTextField18;
 
-            cells[2][0]=jTextField19;
-            cells[2][1]=jTextField20;
-            cells[2][2]=jTextField21;
-            cells[2][3]=jTextField22;
-            cells[2][4]=jTextField23;
-            cells[2][5]=jTextField24;
-            cells[2][6]=jTextField25;
-            cells[2][7]=jTextField26;
-            cells[2][8]=jTextField27;
+        cells[2][0]=jTextField19;
+        cells[2][1]=jTextField20;
+        cells[2][2]=jTextField21;
+        cells[2][3]=jTextField22;
+        cells[2][4]=jTextField23;
+        cells[2][5]=jTextField24;
+        cells[2][6]=jTextField25;
+        cells[2][7]=jTextField26;
+        cells[2][8]=jTextField27;
 
-            cells[3][0]=jTextField28;
-            cells[3][1]=jTextField29;
-            cells[3][2]=jTextField30;
-            cells[3][3]=jTextField31;
-            cells[3][4]=jTextField32;
-            cells[3][5]=jTextField33;
-            cells[3][6]=jTextField34;
-            cells[3][7]=jTextField35;
-            cells[3][8]=jTextField36;
+        cells[3][0]=jTextField28;
+        cells[3][1]=jTextField29;
+        cells[3][2]=jTextField30;
+        cells[3][3]=jTextField31;
+        cells[3][4]=jTextField32;
+        cells[3][5]=jTextField33;
+        cells[3][6]=jTextField34;
+        cells[3][7]=jTextField35;
+        cells[3][8]=jTextField36;
 
-            cells[4][0]=jTextField37;
-            cells[4][1]=jTextField38;
-            cells[4][2]=jTextField39;
-            cells[4][3]=jTextField40;
-            cells[4][4]=jTextField41;
-            cells[4][5]=jTextField42;
-            cells[4][6]=jTextField43;
-            cells[4][7]=jTextField44;
-            cells[4][8]=jTextField45;
+        cells[4][0]=jTextField37;
+        cells[4][1]=jTextField38;
+        cells[4][2]=jTextField39;
+        cells[4][3]=jTextField40;
+        cells[4][4]=jTextField41;
+        cells[4][5]=jTextField42;
+        cells[4][6]=jTextField43;
+        cells[4][7]=jTextField44;
+        cells[4][8]=jTextField45;
 
-            cells[5][0]=jTextField46;
-            cells[5][1]=jTextField47;
-            cells[5][2]=jTextField48;
-            cells[5][3]=jTextField49;
-            cells[5][4]=jTextField50;
-            cells[5][5]=jTextField51;
-            cells[5][6]=jTextField52;
-            cells[5][7]=jTextField53;
-            cells[5][8]=jTextField54;
+        cells[5][0]=jTextField46;
+        cells[5][1]=jTextField47;
+        cells[5][2]=jTextField48;
+        cells[5][3]=jTextField49;
+        cells[5][4]=jTextField50;
+        cells[5][5]=jTextField51;
+        cells[5][6]=jTextField52;
+        cells[5][7]=jTextField53;
+        cells[5][8]=jTextField54;
 
-            cells[6][0]=jTextField55;
-            cells[6][1]=jTextField56;
-            cells[6][2]=jTextField57;
-            cells[6][3]=jTextField58;
-            cells[6][4]=jTextField59;
-            cells[6][5]=jTextField60;
-            cells[6][6]=jTextField61;
-            cells[6][7]=jTextField62;
-            cells[6][8]=jTextField63;
+        cells[6][0]=jTextField55;
+        cells[6][1]=jTextField56;
+        cells[6][2]=jTextField57;
+        cells[6][3]=jTextField58;
+        cells[6][4]=jTextField59;
+        cells[6][5]=jTextField60;
+        cells[6][6]=jTextField61;
+        cells[6][7]=jTextField62;
+        cells[6][8]=jTextField63;
 
-            cells[7][0]=jTextField64;
-            cells[7][1]=jTextField65;
-            cells[7][2]=jTextField66;
-            cells[7][3]=jTextField67;
-            cells[7][4]=jTextField68;
-            cells[7][5]=jTextField69;
-            cells[7][6]=jTextField70;
-            cells[7][7]=jTextField71;
-            cells[7][8]=jTextField72;
+        cells[7][0]=jTextField64;
+        cells[7][1]=jTextField65;
+        cells[7][2]=jTextField66;
+        cells[7][3]=jTextField67;
+        cells[7][4]=jTextField68;
+        cells[7][5]=jTextField69;
+        cells[7][6]=jTextField70;
+        cells[7][7]=jTextField71;
+        cells[7][8]=jTextField72;
 
-            cells[8][0]=jTextField73;
-            cells[8][1]=jTextField74;
-            cells[8][2]=jTextField75;
-            cells[8][3]=jTextField76;
-            cells[8][4]=jTextField77;
-            cells[8][5]=jTextField78;
-            cells[8][6]=jTextField79;
-            cells[8][7]=jTextField80;
-            cells[8][8]=jTextField81;
+        cells[8][0]=jTextField73;
+        cells[8][1]=jTextField74;
+        cells[8][2]=jTextField75;
+        cells[8][3]=jTextField76;
+        cells[8][4]=jTextField77;
+        cells[8][5]=jTextField78;
+        cells[8][6]=jTextField79;
+        cells[8][7]=jTextField80;
+        cells[8][8]=jTextField81;
 
-            for(int i=0;i<9;i++){
-                for(int j=0;j<9;j++){
-                    JTextField tf=cells[i][j];
-                    int r=i;
-                    int c=j;
-                    cells[i][j].addActionListener(e->confirm(tf,r,c));
-                }
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                JTextField tf=cells[i][j];
+                int r=i;
+                int c=j;
+                cells[i][j].addActionListener(e->confirm(tf,r,c));
             }
-
         }
-        public void loadBoard(int[][] grid){
-       // int[][] grid =Grid.getGrid(filename);
+
+    }
+    public void loadBoard(int[][] grid){
+        // int[][] grid =Grid.getGrid(filename);
 
         for(int i=0;i<9;i++){
             for(int j=0;j<9;j++){
@@ -2071,54 +2072,54 @@ public class SudokuGame extends javax.swing.JFrame {
             }
         }
 
-        }
-        public int[][] unloadBoard(){
-            int[][] grid=new int[9][9];
-            for(int i =0;i<9;i++){
-                for(int j= 0;j<9;j++){
-                    if(cells[i][j].getText().equals("")){
-                        grid[i][j]=0;
-                    }
-                    else
-                        grid[i][j]=Integer.parseInt(cells[i][j].getText());
-
+    }
+    public int[][] unloadBoard(){
+        int[][] grid=new int[9][9];
+        for(int i =0;i<9;i++){
+            for(int j= 0;j<9;j++){
+                if(cells[i][j].getText().equals("")){
+                    grid[i][j]=0;
                 }
+                else
+                    grid[i][j]=Integer.parseInt(cells[i][j].getText());
+
             }
-            return grid;
         }
-        private void confirm(JTextField tf, int r, int c){
+        return grid;
+    }
+    private void confirm(JTextField tf, int r, int c){
 
-            int oldValue=grid[r][c];
-            int newValue;
-            if(tf.getText().equals("")){
+        int oldValue=grid[r][c];
+        int newValue;
+        if(tf.getText().equals("")){
             newValue=0;
-            }
-            else {
-                newValue=Integer.parseInt(tf.getText());
-            }
+        }
+        else {
+            newValue=Integer.parseInt(tf.getText());
+        }
 
-            if(newValue==oldValue){
-                return;
-            }
-            else if(!tf.isEditable()){
-                return;
-            }
-            else {
-                grid[r][c]=newValue;
+        if(newValue==oldValue){
+            return;
+        }
+        else if(!tf.isEditable()){
+            return;
+        }
+        else {
+            grid[r][c]=newValue;
             try {
                 pm.logMove(r,c,newValue,oldValue);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-                JOptionPane.showMessageDialog(null, oldValue + " changed to " + newValue + " at " + r + "," + c);
-                try {
-                    pm.saveCurrentGame(new Game(grid,difficulty));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                tf.setEditable(false);
+            JOptionPane.showMessageDialog(null, oldValue + " changed to " + newValue + " at " + r + "," + c);
+            try {
+                pm.saveCurrentGame(new Game(grid,difficulty));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+            tf.setEditable(false);
         }
+    }
 
 }

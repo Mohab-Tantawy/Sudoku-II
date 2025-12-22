@@ -1824,7 +1824,7 @@ public class SudokuGame extends javax.swing.JFrame {
                    cells[result[i][0]][result[i][1]].setEditable(false);
                }
             } catch (SudokuSolver.InvalidGame e) {
-                throw new RuntimeException(e);
+                JOptionPane.showMessageDialog(null,"Invalid Board");
             }
         }
     }

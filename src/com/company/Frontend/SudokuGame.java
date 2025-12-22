@@ -1779,15 +1779,18 @@ public class SudokuGame extends javax.swing.JFrame {
         runSingleThread valid=new runSingleThread();
 
         if(valid.validate(grid)){
-            JOptionPane.showMessageDialog(null,"Valid");
+            JOptionPane.showMessageDialog(null,"Valid Board.\n Deleting file...");
             try {
                 pm.deleteCurrentGame();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+        else if(Game.getEmptyCellCount(grid)>0){
+            JOptionPane.showMessageDialog(null,"Incomplete Board!");
+        }
         else
-            JOptionPane.showMessageDialog(null,"Invalid");
+            JOptionPane.showMessageDialog(null,"Invalid Board!");
 
     }
 
@@ -1825,7 +1828,7 @@ public class SudokuGame extends javax.swing.JFrame {
                     cells[result[i][0]][result[i][1]].setEditable(false);
                 }
             } catch (SudokuSolver.InvalidGame e) {
-                throw new RuntimeException(e);
+                JOptionPane.showMessageDialog(null,"Invalid Board","Wrong",JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -2112,7 +2115,7 @@ public class SudokuGame extends javax.swing.JFrame {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            JOptionPane.showMessageDialog(null, oldValue + " changed to " + newValue + " at " + r + "," + c);
+            //JOptionPane.showMessageDialog(null, oldValue + " changed to " + newValue + " at " + r + "," + c);
             try {
                 pm.saveCurrentGame(new Game(grid,difficulty));
             } catch (IOException e) {

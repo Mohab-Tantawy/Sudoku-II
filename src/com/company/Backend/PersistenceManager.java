@@ -63,14 +63,16 @@ public class PersistenceManager {
     }
     private void rewriteLogFileFromStack() throws IOException{
         Path logPath = Paths.get(GameConstants.LOG_FILE);
-        if(undoStack.isEmpty()){
-            Files.deleteIfExists(logPath);
-            return;
-        }
+
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(logPath)))){
+            if(undoStack.isEmpty()){
+                //Files.deleteIfExists(logPath);
+                writer.write("");
+                return;
+            }
             List<Move> movesInOrder = new ArrayList<>(undoStack);
             for(Move move : movesInOrder){
-                writer.write((move.serialize()));
+                writer.write((move.serialize())+"\n");
             }
         }
     }

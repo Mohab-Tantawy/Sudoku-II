@@ -31,10 +31,8 @@ public class DiffChooserGUI extends javax.swing.JFrame {
 
     public DiffChooserGUI() {
         initComponents();
-        Catalog catalog= new Catalog(pm);
-        this.catalog=catalog;
-        PersistenceManager pm=new PersistenceManager();
-        this.pm=pm;
+        this.pm=new PersistenceManager();
+        this.catalog= new Catalog(pm);
         setLocationRelativeTo(null);
 
         try {
